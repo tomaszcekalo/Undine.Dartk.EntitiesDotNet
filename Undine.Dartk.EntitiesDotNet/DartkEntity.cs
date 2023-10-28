@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntitiesDotNet;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Undine.Core.Struct;
@@ -7,6 +8,8 @@ namespace Undine.Dartk.EntitiesDotNet
 {
     public class DartkEntity : IUnifiedEntity
     {
+        public Entity Entity { get; set; }
+
         public void AddComponent<A>(in A component) where A : struct
         {
             throw new NotImplementedException();

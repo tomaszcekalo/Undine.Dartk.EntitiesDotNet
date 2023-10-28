@@ -1,6 +1,8 @@
-﻿using System;
+﻿using EntitiesDotNet;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Transactions;
 using Undine.Core;
 using Undine.Core.Struct;
 
@@ -10,10 +12,12 @@ namespace Undine.Dartk.EntitiesDotNet
         where A : struct
     {
         public UnifiedSystem<A> System { get; set; }
+        public EntityArrays Entities { get; set; }
 
         public void ProcessAll()
         {
-            throw new NotImplementedException();
+            Entities.ForEach((ref A a) =>
+                System.ProcessSingleEntity(0, ref a));
         }
     }
 
@@ -22,10 +26,12 @@ namespace Undine.Dartk.EntitiesDotNet
         where B : struct
     {
         public UnifiedSystem<A, B> System { get; set; }
+        public EntityArrays Entities { get; set; }
 
         public void ProcessAll()
         {
-            throw new NotImplementedException();
+            Entities.ForEach((ref A a, ref B b) =>
+                System.ProcessSingleEntity(0, ref a, ref b));
         }
     }
 
@@ -35,10 +41,12 @@ namespace Undine.Dartk.EntitiesDotNet
         where C : struct
     {
         public UnifiedSystem<A, B, C> System { get; set; }
+        public EntityArrays Entities { get; set; }
 
         public void ProcessAll()
         {
-            throw new NotImplementedException();
+            Entities.ForEach((ref A a, ref B b, ref C c) =>
+                System.ProcessSingleEntity(0, ref a, ref b, ref c));
         }
     }
 
@@ -49,10 +57,12 @@ namespace Undine.Dartk.EntitiesDotNet
         where D : struct
     {
         public UnifiedSystem<A, B, C, D> System { get; set; }
+        public EntityArrays Entities { get; set; }
 
         public void ProcessAll()
         {
-            throw new NotImplementedException();
+            Entities.ForEach((ref A a, ref B b, ref C c, ref D d) =>
+                System.ProcessSingleEntity(0, ref a, ref b, ref c, ref d));
         }
     }
 }
