@@ -55,7 +55,11 @@ namespace Undine.Dartk.EntitiesDotNet
 
         public override IUnifiedEntity CreateNewEntity()
         {
-            entityManager.CreateEntity(new Archetype<)
+            var entity = entityManager.CreateEntity(Archetype.Empty);
+            return new DartkEntity()
+            {
+                Entity = entity
+            };
         }
 
         public override ISystem GetSystem<A>(UnifiedSystem<A> system)
